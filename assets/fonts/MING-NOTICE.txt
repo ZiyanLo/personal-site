@@ -1,0 +1,8 @@
+ZYAN Ming ExtraLight is a web subset of Source Han Serif TW ExtraLight by Adobe,
+from https://github.com/adobe-fonts/source-han-serif (release branch).
+The outlines and ExtraLight weight are unchanged. It contains the Traditional
+Chinese characters and punctuation used by this site. Its internal family name
+was changed to ZYAN Ming ExtraLight. It is distributed under the SIL Open Font
+License, Version 1.1; see OFL.txt for copyright and license terms.
+The site uses a locally installed MingLiU/PMingLiU when available, and this
+open-source font as the web fallback. No MingLiU font file is redistributed.
