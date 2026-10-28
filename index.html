@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="ZYAN 的作品与文字。">
+<meta name="description" content="Work and writing by ZYAN.">
 <meta name="color-scheme" content="light dark">
 <title>ZYAN</title>
 <script>try{if(localStorage.getItem('zyan-theme')==='dark')document.documentElement.dataset.theme='dark'}catch(_){}</script>
@@ -27,44 +27,40 @@ summary::-webkit-details-marker{display:none}
 summary::marker{content:""}
 .body{padding:18px 0 14px;overflow-wrap:anywhere}
 .body p{margin:0 0 24px}.body p:last-child{margin-bottom:0}
-.expand{padding:14px 0;min-height:44px;text-align:left}
 .preferences{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(100%,480px);padding:0 40px;display:flex;gap:20px;align-items:center;background:var(--paper);font-size:12px}
 .preferences button{min-height:44px}
 :is(a,button,summary):focus-visible{outline:1px solid currentColor;outline-offset:4px}
 [hidden]{display:none!important}
 @media(max-width:350px){.page{padding-inline:28px}.preferences{padding-inline:28px}.masthead{column-gap:16px}}
-@media print{.preferences,.expand{display:none}.page{padding:0}}
+@media print{.preferences{display:none}.page{padding:0}}
 </style>
-<noscript><style>.edition[hidden]{display:block!important}.expand{display:none}</style></noscript>
+<noscript><style>.edition[hidden]{display:block!important}</style></noscript>
 </head>
 <body>
 <div class="page">
 <header class="masthead">
-<a class="brand" href="#home" lang="en" aria-label="ZYAN — 返回首页">ZYAN</a>
-<nav class="sections" aria-label="栏目">
-<a href="#work" data-section="work" data-i18n="work">作品</a>
-<a href="#writing" data-section="writing" data-i18n="writing">文字</a>
-<a href="#about" data-section="about" data-i18n="about">关于</a>
+<a class="brand" href="#home" lang="en" aria-label="ZYAN — Back to home">ZYAN</a>
+<nav class="sections" aria-label="Sections">
+<a href="#work" data-section="work" data-i18n="work">Work</a>
+<a href="#writing" data-section="writing" data-i18n="writing">Writing</a>
+<a href="#about" data-section="about" data-i18n="about">About</a>
 </nav>
 </header>
 <main aria-label="ZYAN">
-<section class="edition" id="work" aria-label="作品" hidden>
-<details id="sound"><summary data-i18n="sound">模块化智能音响</summary><div class="body"><p data-i18n="soundCopy">一个关于声音与空间的设计项目。</p></div></details>
-<details id="lumen"><summary>LUMEN</summary><div class="body"><p data-i18n="lumenCopy">光闹钟眼罩。</p></div></details>
-<details id="where"><summary>W「N」ERE</summary><div class="body"><p data-i18n="whereCopy">一个关于记忆的设计概念。</p></div></details>
-<button class="expand" type="button" data-i18n="expand">展开</button>
+<section class="edition" id="work" aria-label="Work" hidden>
+<details id="sound"><summary data-i18n="sound">Modular Smart Speaker</summary><div class="body"><p data-i18n="soundCopy">A design project about sound and space.</p></div></details>
+<details id="lumen"><summary>LUMEN</summary><div class="body"><p data-i18n="lumenCopy">A light-alarm sleep mask.</p></div></details>
+<details id="where"><summary>W「N」ERE</summary><div class="body"><p data-i18n="whereCopy">A design concept about memory.</p></div></details>
 </section>
-<section class="edition" id="writing" aria-label="文字" hidden>
-<details id="note"><summary data-i18n="note">一些文字</summary><div class="body"><p data-i18n="noteCopy">待更新。</p></div></details>
-<button class="expand" type="button" data-i18n="expand">展开</button>
+<section class="edition" id="writing" aria-label="Writing" hidden>
+<details id="note"><summary data-i18n="note">Writing</summary><div class="body"><p data-i18n="noteCopy">To be updated.</p></div></details>
 </section>
-<section class="edition" id="about" aria-label="关于" hidden>
-<details id="profile"><summary>ZYAN</summary><div class="body"><p data-i18n="aboutCopy">设计与生活。</p></div></details>
-<button class="expand" type="button" data-i18n="expand">展开</button>
+<section class="edition" id="about" aria-label="About" hidden>
+<details id="profile"><summary>ZYAN</summary><div class="body"><p data-i18n="aboutCopy">Design and life.</p></div></details>
 </section>
 </main>
 </div>
-<nav class="preferences" aria-label="显示设置" hidden><button id="language" type="button" lang="en">EN</button><button id="theme" type="button">深色</button></nav>
+<nav class="preferences" aria-label="Display settings" hidden><button id="language" type="button" lang="zh-CN">中文</button><button id="theme" type="button">Dark</button></nav>
 <script>
 (()=>{
 const root=document.documentElement;
@@ -74,19 +70,12 @@ const themeButton=document.getElementById('theme');
 const editions=[...document.querySelectorAll('.edition')];
 const sectionLinks=[...document.querySelectorAll('[data-section]')];
 const strings={
-zh:{work:'作品',writing:'文字',about:'关于',sound:'模块化智能音响',note:'一些文字',soundCopy:'一个关于声音与空间的设计项目。',lumenCopy:'光闹钟眼罩。',whereCopy:'一个关于记忆的设计概念。',noteCopy:'待更新。',aboutCopy:'设计与生活。',expand:'展开',collapse:'收起',expandAll:'展开全部',collapseAll:'收起全部',dark:'深色',light:'浅色',settings:'显示设置',sections:'栏目',home:'返回首页',themeDark:'切换到深色模式',themeLight:'切换到浅色模式',description:'ZYAN 的作品与文字。'},
-en:{work:'Work',writing:'Writing',about:'About',sound:'Modular Smart Speaker',note:'Writing',soundCopy:'A design project about sound and space.',lumenCopy:'A light-alarm sleep mask.',whereCopy:'A design concept about memory.',noteCopy:'To be updated.',aboutCopy:'Design and life.',expand:'Expand',collapse:'Collapse',expandAll:'Expand all',collapseAll:'Collapse all',dark:'Dark',light:'Light',settings:'Display settings',sections:'Sections',home:'Back to home',themeDark:'Switch to dark mode',themeLight:'Switch to light mode',description:'Work and writing by ZYAN.'}
+zh:{work:'作品',writing:'文字',about:'关于',sound:'模块化智能音响',note:'一些文字',soundCopy:'一个关于声音与空间的设计项目。',lumenCopy:'光闹钟眼罩。',whereCopy:'一个关于记忆的设计概念。',noteCopy:'待更新。',aboutCopy:'设计与生活。',dark:'深色',light:'浅色',settings:'显示设置',sections:'栏目',home:'返回首页',themeDark:'切换到深色模式',themeLight:'切换到浅色模式',description:'ZYAN 的作品与文字。'},
+en:{work:'Work',writing:'Writing',about:'About',sound:'Modular Smart Speaker',note:'Writing',soundCopy:'A design project about sound and space.',lumenCopy:'A light-alarm sleep mask.',whereCopy:'A design concept about memory.',noteCopy:'To be updated.',aboutCopy:'Design and life.',dark:'Dark',light:'Light',settings:'Display settings',sections:'Sections',home:'Back to home',themeDark:'Switch to dark mode',themeLight:'Switch to light mode',description:'Work and writing by ZYAN.'}
 };
-let language='zh',activeSection=null;
-try{if(localStorage.getItem('zyan-language')==='en')language='en'}catch(_){}
+let language='en',activeSection=null;
+try{if(localStorage.getItem('zyan-language-v2')==='zh')language='zh'}catch(_){}
 function remember(key,value){try{localStorage.setItem(key,value)}catch(_){}}
-function updateExpand(edition){
-const allOpen=[...edition.querySelectorAll('details')].every(detail=>detail.open);
-const button=edition.querySelector('.expand');
-button.textContent=strings[language][allOpen?'collapse':'expand'];
-button.setAttribute('aria-label',strings[language][allOpen?'collapseAll':'expandAll']);
-button.setAttribute('aria-expanded',String(allOpen));
-}
 function updateTitle(){document.title=activeSection?strings[language][activeSection.id]+' — ZYAN':'ZYAN'}
 function updateThemeButton(){
 const dark=root.dataset.theme==='dark';
@@ -103,7 +92,7 @@ settings.setAttribute('aria-label',strings[language].settings);
 document.querySelector('.sections').setAttribute('aria-label',strings[language].sections);
 document.querySelector('.brand').setAttribute('aria-label','ZYAN — '+strings[language].home);
 document.querySelector('meta[name="description"]').content=strings[language].description;
-editions.forEach(edition=>{edition.setAttribute('aria-label',strings[language][edition.id]);updateExpand(edition)});
+editions.forEach(edition=>{edition.setAttribute('aria-label',strings[language][edition.id])});
 updateThemeButton();updateTitle();
 }
 function route(focus=false){
@@ -122,14 +111,7 @@ const destination=target&&target.matches('details')?target.querySelector('summar
 destination.focus({preventScroll:true});window.scrollTo(0,0);
 }
 }
-editions.forEach(edition=>{
-edition.querySelectorAll('details').forEach(detail=>detail.addEventListener('toggle',()=>updateExpand(edition)));
-edition.querySelector('.expand').addEventListener('click',()=>{
-const details=[...edition.querySelectorAll('details')],open=!details.every(detail=>detail.open);
-details.forEach(detail=>{detail.open=open});updateExpand(edition);
-});
-});
-languageButton.addEventListener('click',()=>{language=language==='zh'?'en':'zh';remember('zyan-language',language);translate()});
+languageButton.addEventListener('click',()=>{language=language==='zh'?'en':'zh';remember('zyan-language-v2',language);translate()});
 themeButton.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';remember('zyan-theme',root.dataset.theme);updateThemeButton()});
 window.addEventListener('hashchange',()=>route(true));
 route();translate();settings.hidden=false;
