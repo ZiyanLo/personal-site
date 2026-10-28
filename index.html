@@ -30,6 +30,7 @@ button{font:inherit;letter-spacing:inherit;border:0;border-radius:0;padding:0;ba
 .sections a[aria-current="page"],.sections a:hover,.sections a:focus-visible{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
 .masthead a:focus-visible{outline:none}
 details{margin:0}
+.edition:has(> details[open]) > details:not([open]){opacity:.55}
 summary{padding:14px 0;list-style:none;cursor:pointer;overflow-wrap:anywhere}
 summary::-webkit-details-marker{display:none}
 summary::marker{content:""}
