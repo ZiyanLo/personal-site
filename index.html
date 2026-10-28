@@ -54,11 +54,10 @@ summary::marker{content:""}
 .contacts li{margin:0 0 12px}
 .contacts a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .preferences{position:relative;z-index:2;width:min(100%,480px);margin:0 auto;padding:12px 40px 0;flex:none;display:flex;gap:20px;align-items:center;font-size:12px;background:var(--paper)}
-.preferences::before{content:"";position:absolute;top:0;left:40px;right:40px;border-top:1px dashed color-mix(in srgb,var(--ink) 20%,transparent)}
 .preferences button{min-height:44px}
 :is(a,button,summary):focus-visible{outline:1px solid currentColor;outline-offset:4px}
 [hidden]{display:none!important}
-@media(max-width:350px){.masthead,.edition,.preferences{padding-inline:28px}.masthead{gap:16px}.preferences::before{left:28px;right:28px}}
+@media(max-width:350px){.masthead,.edition,.preferences{padding-inline:28px}.masthead{gap:16px}}
 @media print{html,body{height:auto;overflow:visible}.preferences{display:none}.page{height:auto;padding:0}main{overflow:visible;-webkit-mask-image:none;mask-image:none}.masthead,.edition > details[open] > summary{position:static}}
 </style>
 <noscript><style>.edition[hidden]{display:block!important}</style></noscript>
