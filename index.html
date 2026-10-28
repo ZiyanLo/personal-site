@@ -13,16 +13,17 @@
 <script>try{if(localStorage.getItem('zyan-theme')==='dark')document.documentElement.dataset.theme='dark'}catch(_){}</script>
 <style>
 html,body{touch-action:pan-y pinch-zoom}
+html{scroll-padding-top:96px}
 @font-face{font-family:"ZYAN Ming Light";src:local("MingLiU"),local("細明體"),local("PMingLiU"),url("assets/fonts/ming-light-v3.woff") format("woff");font-style:normal;font-weight:400;font-display:swap;unicode-range:U+2E80-303F,U+31C0-31EF,U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+FF00-FFEF,U+20000-2FA1F}
 :root{color-scheme:light;--paper:#e9e9eb;--ink:#171717}
 :root[data-theme="dark"]{color-scheme:dark;--paper:#171717;--ink:#e9e9eb}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.5 "ZYAN Ming Light","Courier New","Liberation Mono","Songti TC","Noto Serif CJK TC",serif;letter-spacing:0}
-.page{max-width:480px;min-height:100svh;margin:0 auto;padding:40px 40px max(20px,env(safe-area-inset-bottom));display:flex;flex-direction:column}
+.page{max-width:480px;min-height:100svh;margin:0 auto;padding:0 40px max(20px,env(safe-area-inset-bottom));display:flex;flex-direction:column}
 a,button,summary{color:inherit;-webkit-tap-highlight-color:transparent}
 a{text-decoration:none}
 button{font:inherit;letter-spacing:inherit;border:0;border-radius:0;padding:0;background:none;cursor:pointer}
-.masthead{display:flex;align-items:baseline;flex-wrap:wrap;column-gap:20px;row-gap:12px;margin-bottom:14px}
+.masthead{position:sticky;top:0;z-index:2;background:var(--paper);display:flex;align-items:baseline;flex-wrap:wrap;column-gap:20px;row-gap:12px;padding:40px 0 14px}
 .brand{white-space:nowrap;font-size:18px;font-weight:700;letter-spacing:-.04em}
 .sections{display:flex;flex-wrap:wrap;gap:12px}
 .masthead a{position:relative;display:inline-block}
@@ -52,7 +53,7 @@ summary::marker{content:""}
 .preferences button{min-height:44px}
 :is(a,button,summary):focus-visible{outline:1px solid currentColor;outline-offset:4px}
 [hidden]{display:none!important}
-@media(max-width:760px){.page{padding-top:84px}.preferences{top:0;right:0;left:0;justify-content:flex-end;min-height:68px;padding:12px 28px}html{scroll-padding-top:84px}}
+@media(max-width:760px){.page{padding-top:68px}.masthead{top:68px;padding-top:16px}.preferences{top:0;right:0;left:0;justify-content:flex-end;min-height:68px;padding:12px 28px}html{scroll-padding-top:140px}}
 @media(max-width:350px){.page{padding-inline:28px}.masthead{column-gap:16px}}
 @media print{.preferences{display:none}.page{padding:0}}
 </style>
