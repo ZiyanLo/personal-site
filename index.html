@@ -13,17 +13,20 @@
 <script>try{if(localStorage.getItem('zyan-theme')==='dark')document.documentElement.dataset.theme='dark'}catch(_){}</script>
 <style>
 html,body{touch-action:pan-y pinch-zoom}
-html{scroll-padding-top:calc(var(--masthead-height,84px) + 16px)}
+html,body{height:100%;overflow:hidden;overscroll-behavior-y:none}
 @font-face{font-family:"ZYAN Ming Light";src:local("MingLiU"),local("細明體"),local("PMingLiU"),url("assets/fonts/ming-light-v3.woff") format("woff");font-style:normal;font-weight:400;font-display:swap;unicode-range:U+2E80-303F,U+31C0-31EF,U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+FF00-FFEF,U+20000-2FA1F}
 :root{color-scheme:light;--paper:#e9e9eb;--ink:#171717}
 :root[data-theme="dark"]{color-scheme:dark;--paper:#171717;--ink:#e9e9eb}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.5 "ZYAN Ming Light","Courier New","Liberation Mono","Songti TC","Noto Serif CJK TC",serif;letter-spacing:0}
-.page{max-width:480px;min-height:100svh;margin:0 auto;padding:0 40px max(20px,env(safe-area-inset-bottom));display:flex;flex-direction:column}
+.page{height:100svh;height:100dvh;overflow:hidden;padding:40px 0 max(20px,env(safe-area-inset-bottom));display:flex;flex-direction:column}
+main{flex:1;min-height:0;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-width:none;-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(to bottom,#000 calc(100% - 24px),transparent)}
+main::-webkit-scrollbar{display:none}
+.edition{max-width:480px;margin:0 auto;padding:0 40px 28px}
 a,button,summary{color:inherit;-webkit-tap-highlight-color:transparent}
 a{text-decoration:none}
 button{font:inherit;letter-spacing:inherit;border:0;border-radius:0;padding:0;background:none;cursor:pointer}
-.masthead{position:sticky;top:0;z-index:2;background:var(--paper);display:flex;align-items:center;flex-wrap:nowrap;gap:16px;padding:28px 0 12px;min-height:84px}
+.masthead{position:relative;z-index:2;width:min(100%,480px);margin:0 auto;padding:0 40px 14px;flex:none;display:flex;align-items:baseline;flex-wrap:nowrap;gap:20px;background:var(--paper)}
 .brand{white-space:nowrap;font-size:18px;font-weight:700;letter-spacing:-.04em}
 .sections{display:flex;flex-wrap:nowrap;gap:12px;white-space:nowrap}
 .masthead a{position:relative;display:inline-block}
@@ -33,7 +36,7 @@ button{font:inherit;letter-spacing:inherit;border:0;border-radius:0;padding:0;ba
 details{margin:0}
 .edition:has(> details[open]) > details:not([open]){opacity:.55}
 summary{padding:14px 0;list-style:none;cursor:pointer;overflow-wrap:anywhere}
-.edition > details[open] > summary{position:sticky;top:var(--masthead-height,84px);z-index:1;background:var(--paper)}
+.edition > details[open] > summary{position:sticky;top:0;z-index:1;background:var(--paper)}
 summary::-webkit-details-marker{display:none}
 summary::marker{content:""}
 .body{padding:18px 0 14px;overflow-wrap:anywhere}
@@ -50,13 +53,13 @@ summary::marker{content:""}
 .contacts{list-style:none;margin:36px 0 0;padding:0}
 .contacts li{margin:0 0 12px}
 .contacts a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-.preferences{margin-left:auto;display:flex;gap:12px;align-items:center;font-size:12px;white-space:nowrap;flex-shrink:0}
+.preferences{position:relative;z-index:2;width:min(100%,480px);margin:0 auto;padding:12px 40px 0;flex:none;display:flex;gap:20px;align-items:center;font-size:12px;background:var(--paper)}
+.preferences::before{content:"";position:absolute;top:0;left:40px;right:40px;border-top:1px dashed color-mix(in srgb,var(--ink) 20%,transparent)}
 .preferences button{min-height:44px}
 :is(a,button,summary):focus-visible{outline:1px solid currentColor;outline-offset:4px}
 [hidden]{display:none!important}
-@media(max-width:520px){.page{padding-inline:24px}.masthead{gap:10px}.sections{gap:9px}}
-@media(max-width:360px){.page{padding-inline:20px}.masthead{gap:10px}.brand{font-size:16px}.sections{gap:8px;font-size:12px}.preferences{gap:10px;font-size:11px}}
-@media print{.preferences{display:none}.page{padding:0}.masthead,.edition > details[open] > summary{position:static}}
+@media(max-width:350px){.masthead,.edition,.preferences{padding-inline:28px}.masthead{gap:16px}.preferences::before{left:28px;right:28px}}
+@media print{html,body{height:auto;overflow:visible}.preferences{display:none}.page{height:auto;padding:0}main{overflow:visible;-webkit-mask-image:none;mask-image:none}.masthead,.edition > details[open] > summary{position:static}}
 </style>
 <noscript><style>.edition[hidden]{display:block!important}</style></noscript>
 </head>
@@ -69,7 +72,6 @@ summary::marker{content:""}
 <a href="#writing" data-section="writing" data-i18n="writing">Writing</a>
 <a href="#picks" data-section="picks" data-i18n="picks">Picks</a>
 </nav>
-<nav class="preferences" aria-label="Display settings" hidden><button id="language" type="button" lang="zh-Hant">中文</button><button id="theme" type="button">Dark</button></nav>
 </header>
 <main aria-label="YOUNG">
 <section class="edition" id="home" aria-label="Home">
@@ -102,6 +104,7 @@ summary::marker{content:""}
 <details name="entry" id="pick-objects"><summary data-i18n="objects">Objects</summary><div class="body"><ul class="pick-list"><li><span>Braun T3</span><p class="pick-meta" data-i18n="pick-braun-meta">Pocket radio · Dieter Rams / HfG Ulm · 1958</p></li><li><span>Vitsœ 606</span><p class="pick-meta" data-i18n="pick-vitsoe-meta">Shelving system · Dieter Rams · 1960</p></li></ul></div></details>
 </section>
 </main>
+<nav class="preferences" aria-label="Display settings" hidden><button id="language" type="button" lang="zh-Hant">中文</button><button id="theme" type="button">Dark</button></nav>
 </div>
 <script type="module">
 import { installSwipeNavigation } from "./assets/swipe-navigation.mjs";
@@ -152,17 +155,14 @@ if(target&&target.matches('details'))target.open=true;
 updateTitle();
 if(focus){
 const destination=target&&target.matches('details')?target.querySelector('summary'):activeSection.id!=='home'?sectionLinks.find(link=>link.dataset.section===activeSection.id):document.querySelector('.brand');
-destination.focus({preventScroll:true});window.scrollTo(0,0);
+destination.focus({preventScroll:true});document.querySelector("main").scrollTo(0,0);
 }
 }
 languageButton.addEventListener('click',()=>{language=language==='zh'?'en':'zh';remember('zyan-language-v2',language);translate()});
 themeButton.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';remember('zyan-theme',root.dataset.theme);updateThemeButton()});
 window.addEventListener('hashchange',()=>route(true));
 route();translate();settings.hidden=false;
-const masthead=document.querySelector(".masthead");
-const syncMastheadHeight=()=>root.style.setProperty("--masthead-height",masthead.getBoundingClientRect().height+"px");
-new ResizeObserver(syncMastheadHeight).observe(masthead);
-syncMastheadHeight();
+
 installSwipeNavigation({surface:document,getCurrentPage:()=>activeSection.id,navigate:page=>{location.hash=page;},getSelection:()=>window.getSelection()?.toString()||"",getViewportWidth:()=>window.innerWidth});
 })();
 </script>
