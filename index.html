@@ -27,6 +27,14 @@ summary::-webkit-details-marker{display:none}
 summary::marker{content:""}
 .body{padding:18px 0 14px;overflow-wrap:anywhere}
 .body p{margin:0 0 24px}.body p:last-child{margin-bottom:0}
+#writing summary{display:grid;grid-template-columns:92px minmax(0,1fr);gap:12px;align-items:baseline}
+#writing time{font-size:12px;white-space:nowrap}
+.section-note{font-size:12px;margin:14px 0 8px;opacity:.6}
+.about-copy{padding-top:14px}
+.about-copy p{margin:0 0 24px}
+.contacts{list-style:none;margin:36px 0 0;padding:0}
+.contacts li{margin:0 0 12px}
+.contacts a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .preferences{position:fixed;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(100%,480px);padding:0 40px;display:flex;gap:20px;align-items:center;background:var(--paper);font-size:12px}
 .preferences button{min-height:44px}
 :is(a,button,summary):focus-visible{outline:1px solid currentColor;outline-offset:4px}
@@ -53,10 +61,20 @@ summary::marker{content:""}
 <details id="where"><summary>W「N」ERE</summary><div class="body"><p data-i18n="whereCopy">A design concept about memory.</p></div></details>
 </section>
 <section class="edition" id="writing" aria-label="Writing" hidden>
-<details id="note"><summary data-i18n="note">Writing</summary><div class="body"><p data-i18n="noteCopy">To be updated.</p></div></details>
+<p class="section-note" data-i18n="samples">Sample entries.</p>
+<details id="note"><summary><time datetime="2026-10-28">2026.10.28</time><span data-i18n="placeTitle">A Place of My Own</span></summary><div class="body"><p data-i18n="place1">A personal website can be a quiet place to keep things: a project, a paragraph, a question that is not ready to become an answer.</p><p data-i18n="place2">I want this space to grow slowly. Some pages will remain unfinished. That is part of keeping a record, rather than presenting a final version of myself.</p></div></details>
+<details id="attention"><summary><time datetime="2026-10-20">2026.10.20</time><span data-i18n="attentionTitle">Objects and Attention</span></summary><div class="body"><p data-i18n="attention1">A useful object does not always need to ask for attention. Sometimes its best quality is how easily it settles into a routine.</p><p data-i18n="attention2">A switch that makes sense without instructions, a light that tells you just enough, a speaker that belongs in the room. These small decisions are worth noticing.</p></div></details>
+<details id="design-notes"><summary><time datetime="2026-09-15">2026.09.15</time><span data-i18n="featureTitle">Before Adding Another Feature</span></summary><div class="body"><p data-i18n="feature1">Before adding a feature, I like to return to the moment of use. Where is the person? What are their hands doing? What are they actually trying to finish?</p><p data-i18n="feature2">A product can gain clarity when a decision is removed. The question is not how many things it can do, but how comfortably it fits the situation.</p></div></details>
 </section>
 <section class="edition" id="about" aria-label="About" hidden>
-<details id="profile"><summary>ZYAN</summary><div class="body"><p data-i18n="aboutCopy">Design and life.</p></div></details>
+<div class="about-copy" id="profile">
+<p data-i18n="bio1">I'm ZYAN. I have a background in industrial design, with an interest in consumer electronics, sound, and our everyday relationship with technology.</p>
+<p data-i18n="bio2">This is a personal archive of projects, observations, and notes on design, reading, and daily life.</p>
+<ul class="contacts" aria-label="Contact and links">
+<li><a href="mailto:zyanlo903@gmail.com">zyanlo903@gmail.com</a></li>
+<li><a href="https://github.com/ZiyanLo" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+</ul>
+</div>
 </section>
 </main>
 </div>
@@ -70,8 +88,8 @@ const themeButton=document.getElementById('theme');
 const editions=[...document.querySelectorAll('.edition')];
 const sectionLinks=[...document.querySelectorAll('[data-section]')];
 const strings={
-zh:{work:'作品',writing:'文字',about:'关于',sound:'模块化智能音响',note:'一些文字',soundCopy:'一个关于声音与空间的设计项目。',lumenCopy:'光闹钟眼罩。',whereCopy:'一个关于记忆的设计概念。',noteCopy:'待更新。',aboutCopy:'设计与生活。',dark:'深色',light:'浅色',settings:'显示设置',sections:'栏目',home:'返回首页',themeDark:'切换到深色模式',themeLight:'切换到浅色模式',description:'ZYAN 的作品与文字。'},
-en:{work:'Work',writing:'Writing',about:'About',sound:'Modular Smart Speaker',note:'Writing',soundCopy:'A design project about sound and space.',lumenCopy:'A light-alarm sleep mask.',whereCopy:'A design concept about memory.',noteCopy:'To be updated.',aboutCopy:'Design and life.',dark:'Dark',light:'Light',settings:'Display settings',sections:'Sections',home:'Back to home',themeDark:'Switch to dark mode',themeLight:'Switch to light mode',description:'Work and writing by ZYAN.'}
+zh:{"samples": "以下为示例文章。", "placeTitle": "一个属于自己的地方", "place1": "个人网站可以是一个安静存放东西的地方：一个项目、一小段文字，或一个还没想出答案的问题。", "place2": "我希望这里慢慢生长。有些页面会暂时不完整。记录的意义，也许就在于留下过程，而不是展示一个已经定稿的自己。", "attentionTitle": "物品与注意力", "attention1": "一个好用的物品，不一定需要不断吸引注意。有时，它最好的状态是自然地进入日常。", "attention2": "一个不用解释的开关，一盏只传达必要信息的灯，一个能融入房间的音箱。这些很小的设计决定，值得被认真观察。", "featureTitle": "再加一个功能之前", "feature1": "在增加功能之前，我更想回到使用发生的那一刻：人在哪里？双手在做什么？真正想完成的事情是什么？", "feature2": "减少一个需要做决定的步骤，可能比增加一种能力更有价值。产品不只是能做多少事，也在于它能否舒服地进入那个具体的情境。", "bio1": "我是 ZYAN，工业设计背景。关注消费电子、声音体验，以及人与技术的日常关系。", "bio2": "这里是一份个人档案：放一些做过的项目，也记录关于设计、阅读与日常生活的观察。", "contacts": "联系方式与平台",work:'作品',writing:'文字',about:'关于',sound:'模块化智能音响',note:'一些文字',soundCopy:'一个关于声音与空间的设计项目。',lumenCopy:'光闹钟眼罩。',whereCopy:'一个关于记忆的设计概念。',noteCopy:'待更新。',aboutCopy:'设计与生活。',dark:'深色',light:'浅色',settings:'显示设置',sections:'栏目',home:'返回首页',themeDark:'切换到深色模式',themeLight:'切换到浅色模式',description:'ZYAN 的作品与文字。'},
+en:{"samples": "Sample entries.", "bio1": "I'm ZYAN. I have a background in industrial design, with an interest in consumer electronics, sound, and our everyday relationship with technology.", "bio2": "This is a personal archive of projects, observations, and notes on design, reading, and daily life.", "contacts": "Contact and links", "placeTitle": "A Place of My Own", "place1": "A personal website can be a quiet place to keep things: a project, a paragraph, a question that is not ready to become an answer.", "place2": "I want this space to grow slowly. Some pages will remain unfinished. That is part of keeping a record, rather than presenting a final version of myself.", "attentionTitle": "Objects and Attention", "attention1": "A useful object does not always need to ask for attention. Sometimes its best quality is how easily it settles into a routine.", "attention2": "A switch that makes sense without instructions, a light that tells you just enough, a speaker that belongs in the room. These small decisions are worth noticing.", "featureTitle": "Before Adding Another Feature", "feature1": "Before adding a feature, I like to return to the moment of use. Where is the person? What are their hands doing? What are they actually trying to finish?", "feature2": "A product can gain clarity when a decision is removed. The question is not how many things it can do, but how comfortably it fits the situation.",work:'Work',writing:'Writing',about:'About',sound:'Modular Smart Speaker',note:'Writing',soundCopy:'A design project about sound and space.',lumenCopy:'A light-alarm sleep mask.',whereCopy:'A design concept about memory.',noteCopy:'To be updated.',aboutCopy:'Design and life.',dark:'Dark',light:'Light',settings:'Display settings',sections:'Sections',home:'Back to home',themeDark:'Switch to dark mode',themeLight:'Switch to light mode',description:'Work and writing by ZYAN.'}
 };
 let language='en',activeSection=null;
 try{if(localStorage.getItem('zyan-language-v2')==='zh')language='zh'}catch(_){}
@@ -89,6 +107,7 @@ languageButton.textContent=language==='zh'?'EN':'中文';
 languageButton.lang=language==='zh'?'en':'zh-CN';
 languageButton.setAttribute('aria-label',language==='zh'?'Switch to English':'切换到中文');
 settings.setAttribute('aria-label',strings[language].settings);
+document.querySelector('.contacts').setAttribute('aria-label',strings[language].contacts);
 document.querySelector('.sections').setAttribute('aria-label',strings[language].sections);
 document.querySelector('.brand').setAttribute('aria-label','ZYAN — '+strings[language].home);
 document.querySelector('meta[name="description"]').content=strings[language].description;
