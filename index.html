@@ -13,7 +13,7 @@
 <script>try{if(localStorage.getItem('zyan-theme')==='dark')document.documentElement.dataset.theme='dark'}catch(_){}</script>
 <style>
 html,body{touch-action:pan-y pinch-zoom}
-html{scroll-padding-top:96px}
+html{scroll-padding-top:calc(var(--masthead-height,84px) + 16px)}
 @font-face{font-family:"ZYAN Ming Light";src:local("MingLiU"),local("細明體"),local("PMingLiU"),url("assets/fonts/ming-light-v3.woff") format("woff");font-style:normal;font-weight:400;font-display:swap;unicode-range:U+2E80-303F,U+31C0-31EF,U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+FF00-FFEF,U+20000-2FA1F}
 :root{color-scheme:light;--paper:#e9e9eb;--ink:#171717}
 :root[data-theme="dark"]{color-scheme:dark;--paper:#171717;--ink:#e9e9eb}
@@ -23,9 +23,9 @@ body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.5 "ZYAN M
 a,button,summary{color:inherit;-webkit-tap-highlight-color:transparent}
 a{text-decoration:none}
 button{font:inherit;letter-spacing:inherit;border:0;border-radius:0;padding:0;background:none;cursor:pointer}
-.masthead{position:sticky;top:0;z-index:2;background:var(--paper);display:flex;align-items:baseline;flex-wrap:wrap;column-gap:20px;row-gap:12px;padding:40px 0 14px}
+.masthead{position:sticky;top:0;z-index:2;background:var(--paper);display:flex;align-items:center;flex-wrap:nowrap;gap:16px;padding:28px 0 12px;min-height:84px}
 .brand{white-space:nowrap;font-size:18px;font-weight:700;letter-spacing:-.04em}
-.sections{display:flex;flex-wrap:wrap;gap:12px}
+.sections{display:flex;flex-wrap:nowrap;gap:12px;white-space:nowrap}
 .masthead a{position:relative;display:inline-block}
 .masthead a::after{position:absolute;content:"";inset:-10px -3px}
 .sections a[aria-current="page"],.sections a:hover,.sections a:focus-visible{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
@@ -33,6 +33,7 @@ button{font:inherit;letter-spacing:inherit;border:0;border-radius:0;padding:0;ba
 details{margin:0}
 .edition:has(> details[open]) > details:not([open]){opacity:.55}
 summary{padding:14px 0;list-style:none;cursor:pointer;overflow-wrap:anywhere}
+.edition > details[open] > summary{position:sticky;top:var(--masthead-height,84px);z-index:1;background:var(--paper)}
 summary::-webkit-details-marker{display:none}
 summary::marker{content:""}
 .body{padding:18px 0 14px;overflow-wrap:anywhere}
@@ -49,13 +50,13 @@ summary::marker{content:""}
 .contacts{list-style:none;margin:36px 0 0;padding:0}
 .contacts li{margin:0 0 12px}
 .contacts a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-.preferences{position:fixed;top:28px;right:32px;z-index:3;display:flex;gap:20px;align-items:center;background:var(--paper);font-size:12px}
+.preferences{margin-left:auto;display:flex;gap:12px;align-items:center;font-size:12px;white-space:nowrap;flex-shrink:0}
 .preferences button{min-height:44px}
 :is(a,button,summary):focus-visible{outline:1px solid currentColor;outline-offset:4px}
 [hidden]{display:none!important}
-@media(max-width:760px){.page{padding-top:68px}.masthead{top:68px;padding-top:16px}.preferences{top:0;right:0;left:0;justify-content:flex-end;min-height:68px;padding:12px 28px}html{scroll-padding-top:140px}}
-@media(max-width:350px){.page{padding-inline:28px}.masthead{column-gap:16px}}
-@media print{.preferences{display:none}.page{padding:0}}
+@media(max-width:520px){.page{padding-inline:20px}.masthead{gap:12px}.sections{gap:10px}}
+@media(max-width:360px){.page{padding-inline:16px}.masthead{gap:10px}.brand{font-size:16px}.sections{gap:8px;font-size:12px}.preferences{gap:10px;font-size:11px}}
+@media print{.preferences{display:none}.page{padding:0}.masthead,.edition > details[open] > summary{position:static}}
 </style>
 <noscript><style>.edition[hidden]{display:block!important}</style></noscript>
 </head>
@@ -68,6 +69,7 @@ summary::marker{content:""}
 <a href="#writing" data-section="writing" data-i18n="writing">Writing</a>
 <a href="#picks" data-section="picks" data-i18n="picks">Picks</a>
 </nav>
+<nav class="preferences" aria-label="Display settings" hidden><button id="language" type="button" lang="zh-Hant">中文</button><button id="theme" type="button">Dark</button></nav>
 </header>
 <main aria-label="YOUNG">
 <section class="edition" id="home" aria-label="Home">
@@ -101,7 +103,6 @@ summary::marker{content:""}
 </section>
 </main>
 </div>
-<nav class="preferences" aria-label="Display settings" hidden><button id="language" type="button" lang="zh-Hant">中文</button><button id="theme" type="button">Dark</button></nav>
 <script type="module">
 import { installSwipeNavigation } from "./assets/swipe-navigation.mjs";
 (()=>{
@@ -158,6 +159,10 @@ languageButton.addEventListener('click',()=>{language=language==='zh'?'en':'zh';
 themeButton.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';remember('zyan-theme',root.dataset.theme);updateThemeButton()});
 window.addEventListener('hashchange',()=>route(true));
 route();translate();settings.hidden=false;
+const masthead=document.querySelector(".masthead");
+const syncMastheadHeight=()=>root.style.setProperty("--masthead-height",masthead.getBoundingClientRect().height+"px");
+new ResizeObserver(syncMastheadHeight).observe(masthead);
+syncMastheadHeight();
 installSwipeNavigation({surface:document,getCurrentPage:()=>activeSection.id,navigate:page=>{location.hash=page;},getSelection:()=>window.getSelection()?.toString()||"",getViewportWidth:()=>window.innerWidth});
 })();
 </script>
