@@ -48,10 +48,11 @@ summary::marker{content:""}
 .contacts{list-style:none;margin:36px 0 0;padding:0}
 .contacts li{margin:0 0 12px}
 .contacts a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-.preferences{margin-top:auto;padding-top:64px;display:flex;gap:20px;align-items:center;font-size:12px}
+.preferences{position:fixed;top:28px;right:32px;z-index:3;display:flex;gap:20px;align-items:center;background:var(--paper);font-size:12px}
 .preferences button{min-height:44px}
 :is(a,button,summary):focus-visible{outline:1px solid currentColor;outline-offset:4px}
 [hidden]{display:none!important}
+@media(max-width:760px){.page{padding-top:84px}.preferences{top:0;right:0;left:0;justify-content:flex-end;min-height:68px;padding:12px 28px}html{scroll-padding-top:84px}}
 @media(max-width:350px){.page{padding-inline:28px}.masthead{column-gap:16px}}
 @media print{.preferences{display:none}.page{padding:0}}
 </style>
@@ -98,8 +99,8 @@ summary::marker{content:""}
 <details name="entry" id="pick-objects"><summary data-i18n="objects">Objects</summary><div class="body"><ul class="pick-list"><li><span>Braun T3</span><p class="pick-meta" data-i18n="pick-braun-meta">Pocket radio · Dieter Rams / HfG Ulm · 1958</p></li><li><span>Vitsœ 606</span><p class="pick-meta" data-i18n="pick-vitsoe-meta">Shelving system · Dieter Rams · 1960</p></li></ul></div></details>
 </section>
 </main>
-<nav class="preferences" aria-label="Display settings" hidden><button id="language" type="button" lang="zh-Hant">中文</button><button id="theme" type="button">Dark</button></nav>
 </div>
+<nav class="preferences" aria-label="Display settings" hidden><button id="language" type="button" lang="zh-Hant">中文</button><button id="theme" type="button">Dark</button></nav>
 <script type="module">
 import { installSwipeNavigation } from "./assets/swipe-navigation.mjs";
 (()=>{
