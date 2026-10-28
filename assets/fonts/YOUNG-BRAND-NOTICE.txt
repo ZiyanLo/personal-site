@@ -1,0 +1,1 @@
+YOUNG Brand is a renamed web subset of Liberation Mono Bold (weight 700). The outlines and weight are unchanged. The header text, SVG favicon outline and ICO fallback all use this same font source. See YOUNG-BRAND-OFL.txt for copyright and the SIL Open Font License 1.1.
