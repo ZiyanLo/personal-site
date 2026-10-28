@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Work and writing by ZYAN.">
+<meta name="description" content="Work and writing by Young.">
 <meta name="color-scheme" content="light dark">
-<title>ZYAN</title>
+<title>Young</title>
 <script>try{if(localStorage.getItem('zyan-theme')==='dark')document.documentElement.dataset.theme='dark'}catch(_){}</script>
 <style>
 @font-face{font-family:"ZYAN Ming Light";src:local("MingLiU"),local("細明體"),local("PMingLiU"),url("assets/fonts/ming-light-v2.woff") format("woff");font-style:normal;font-weight:400;font-display:swap;unicode-range:U+2E80-303F,U+31C0-31EF,U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+FF00-FFEF,U+20000-2FA1F}
@@ -51,17 +51,17 @@ summary::marker{content:""}
 <body>
 <div class="page">
 <header class="masthead">
-<a class="brand" href="#home" lang="en" aria-label="ZYAN — Back to home">ZYAN</a>
+<a class="brand" href="#home" lang="en" aria-label="Young — Back to home">Young</a>
 <nav class="sections" aria-label="Sections">
 <a href="#work" data-section="work" data-i18n="work">Work</a>
 <a href="#writing" data-section="writing" data-i18n="writing">Writing</a>
 <a href="#picks" data-section="picks" data-i18n="picks">Picks</a>
 </nav>
 </header>
-<main aria-label="ZYAN">
+<main aria-label="Young">
 <section class="edition" id="home" aria-label="Home">
 <div class="about-copy" id="profile">
-<p data-i18n="bio1">I'm ZYAN. I have a background in industrial design, with an interest in consumer electronics, sound, and our everyday relationship with technology.</p>
+<p data-i18n="bio1">I'm Young. I have a background in industrial design, with an interest in consumer electronics, sound, and our everyday relationship with technology.</p>
 <p data-i18n="bio2">This is a personal archive of projects, observations, and notes on design, reading, and daily life.</p>
 <ul class="contacts" aria-label="Contact and links">
 <li><a href="mailto:zyanlo903@gmail.com">zyanlo903@gmail.com</a></li>
@@ -100,13 +100,13 @@ const themeButton=document.getElementById('theme');
 const editions=[...document.querySelectorAll('.edition')];
 const sectionLinks=[...document.querySelectorAll('[data-section]')];
 const strings={
-zh:{"homepage": "首頁", "picks": "私選", "picksIntro": "書籍、電影、音樂、日常工具，以及值得留下的物件。", "books": "書籍", "films": "電影", "music": "音樂", "tools": "工具", "objects": "物件", "empty-books": "書單待加入。", "empty-films": "片單待加入。", "empty-music": "音樂待加入。", "empty-tools": "日常工具待加入。", "empty-objects": "選物與收藏待加入。","samples": "以下為示例文章。", "placeTitle": "一個屬於自己的地方", "place1": "個人網站可以是一個安靜存放東西的地方：一個項目、一小段文字，或一個還沒想出答案的問題。", "place2": "我希望這裡慢慢生長。有些頁面會暫時不完整。記錄的意義，也許就在於留下過程，而不是展示一個已經定稿的自己。", "attentionTitle": "物品與注意力", "attention1": "一個好用的物品，不一定需要不斷吸引注意。有時，它最好的狀態是自然地進入日常。", "attention2": "一個不用解釋的開關，一盞只傳達必要資訊的燈，一個能融入房間的音箱。這些很小的設計決定，值得被認真觀察。", "featureTitle": "再加一個功能之前", "feature1": "在增加功能之前，我更想回到使用發生的那一刻：人在哪裡？雙手在做什麼？真正想完成的事情是什麼？", "feature2": "減少一個需要做決定的步驟，可能比增加一種能力更有價值。產品不只是能做多少事，也在於它能否舒服地進入那個具體的情境。", "bio1": "我是 ZYAN，工業設計背景。關注消費電子、聲音體驗，以及人與技術的日常關係。", "bio2": "這裡是一份個人檔案：放一些做過的項目，也記錄關於設計、閱讀與日常生活的觀察。", "contacts": "聯絡方式與平台", "work": "作品", "writing": "文字", "about": "關於", "sound": "模組化智慧音響", "note": "一些文字", "soundCopy": "一個關於聲音與空間的設計項目。", "lumenCopy": "光鬧鐘眼罩。", "whereCopy": "一個關於記憶的設計概念。", "noteCopy": "待更新。", "aboutCopy": "設計與生活。", "dark": "深色", "light": "淺色", "settings": "顯示設定", "sections": "欄目", "home": "返回首頁", "themeDark": "切換至深色模式", "themeLight": "切換至淺色模式", "description": "ZYAN 的作品與文字。"},
-en:{"homepage": "Home", "picks": "Picks", "picksIntro": "Books, films, music, tools, and things worth keeping.", "books": "Books", "films": "Films", "music": "Music", "tools": "Tools", "objects": "Objects", "empty-books": "No books added yet.", "empty-films": "No films added yet.", "empty-music": "No music added yet.", "empty-tools": "No tools added yet.", "empty-objects": "No objects added yet.","samples": "Sample entries.", "bio1": "I'm ZYAN. I have a background in industrial design, with an interest in consumer electronics, sound, and our everyday relationship with technology.", "bio2": "This is a personal archive of projects, observations, and notes on design, reading, and daily life.", "contacts": "Contact and links", "placeTitle": "A Place of My Own", "place1": "A personal website can be a quiet place to keep things: a project, a paragraph, a question that is not ready to become an answer.", "place2": "I want this space to grow slowly. Some pages will remain unfinished. That is part of keeping a record, rather than presenting a final version of myself.", "attentionTitle": "Objects and Attention", "attention1": "A useful object does not always need to ask for attention. Sometimes its best quality is how easily it settles into a routine.", "attention2": "A switch that makes sense without instructions, a light that tells you just enough, a speaker that belongs in the room. These small decisions are worth noticing.", "featureTitle": "Before Adding Another Feature", "feature1": "Before adding a feature, I like to return to the moment of use. Where is the person? What are their hands doing? What are they actually trying to finish?", "feature2": "A product can gain clarity when a decision is removed. The question is not how many things it can do, but how comfortably it fits the situation.",work:'Work',writing:'Writing',about:'About',sound:'Modular Smart Speaker',note:'Writing',soundCopy:'A design project about sound and space.',lumenCopy:'A light-alarm sleep mask.',whereCopy:'A design concept about memory.',noteCopy:'To be updated.',aboutCopy:'Design and life.',dark:'Dark',light:'Light',settings:'Display settings',sections:'Sections',home:'Back to home',themeDark:'Switch to dark mode',themeLight:'Switch to light mode',description:'Work and writing by ZYAN.'}
+zh:{"homepage": "首頁", "picks": "私選", "picksIntro": "書籍、電影、音樂、日常工具，以及值得留下的物件。", "books": "書籍", "films": "電影", "music": "音樂", "tools": "工具", "objects": "物件", "empty-books": "書單待加入。", "empty-films": "片單待加入。", "empty-music": "音樂待加入。", "empty-tools": "日常工具待加入。", "empty-objects": "選物與收藏待加入。","samples": "以下為示例文章。", "placeTitle": "一個屬於自己的地方", "place1": "個人網站可以是一個安靜存放東西的地方：一個項目、一小段文字，或一個還沒想出答案的問題。", "place2": "我希望這裡慢慢生長。有些頁面會暫時不完整。記錄的意義，也許就在於留下過程，而不是展示一個已經定稿的自己。", "attentionTitle": "物品與注意力", "attention1": "一個好用的物品，不一定需要不斷吸引注意。有時，它最好的狀態是自然地進入日常。", "attention2": "一個不用解釋的開關，一盞只傳達必要資訊的燈，一個能融入房間的音箱。這些很小的設計決定，值得被認真觀察。", "featureTitle": "再加一個功能之前", "feature1": "在增加功能之前，我更想回到使用發生的那一刻：人在哪裡？雙手在做什麼？真正想完成的事情是什麼？", "feature2": "減少一個需要做決定的步驟，可能比增加一種能力更有價值。產品不只是能做多少事，也在於它能否舒服地進入那個具體的情境。", "bio1": "我是 Young，工業設計背景。關注消費電子、聲音體驗，以及人與技術的日常關係。", "bio2": "這裡是一份個人檔案：放一些做過的項目，也記錄關於設計、閱讀與日常生活的觀察。", "contacts": "聯絡方式與平台", "work": "作品", "writing": "文字", "about": "關於", "sound": "模組化智慧音響", "note": "一些文字", "soundCopy": "一個關於聲音與空間的設計項目。", "lumenCopy": "光鬧鐘眼罩。", "whereCopy": "一個關於記憶的設計概念。", "noteCopy": "待更新。", "aboutCopy": "設計與生活。", "dark": "深色", "light": "淺色", "settings": "顯示設定", "sections": "欄目", "home": "返回首頁", "themeDark": "切換至深色模式", "themeLight": "切換至淺色模式", "description": "Young 的作品與文字。"},
+en:{"homepage": "Home", "picks": "Picks", "picksIntro": "Books, films, music, tools, and things worth keeping.", "books": "Books", "films": "Films", "music": "Music", "tools": "Tools", "objects": "Objects", "empty-books": "No books added yet.", "empty-films": "No films added yet.", "empty-music": "No music added yet.", "empty-tools": "No tools added yet.", "empty-objects": "No objects added yet.","samples": "Sample entries.", "bio1": "I'm Young. I have a background in industrial design, with an interest in consumer electronics, sound, and our everyday relationship with technology.", "bio2": "This is a personal archive of projects, observations, and notes on design, reading, and daily life.", "contacts": "Contact and links", "placeTitle": "A Place of My Own", "place1": "A personal website can be a quiet place to keep things: a project, a paragraph, a question that is not ready to become an answer.", "place2": "I want this space to grow slowly. Some pages will remain unfinished. That is part of keeping a record, rather than presenting a final version of myself.", "attentionTitle": "Objects and Attention", "attention1": "A useful object does not always need to ask for attention. Sometimes its best quality is how easily it settles into a routine.", "attention2": "A switch that makes sense without instructions, a light that tells you just enough, a speaker that belongs in the room. These small decisions are worth noticing.", "featureTitle": "Before Adding Another Feature", "feature1": "Before adding a feature, I like to return to the moment of use. Where is the person? What are their hands doing? What are they actually trying to finish?", "feature2": "A product can gain clarity when a decision is removed. The question is not how many things it can do, but how comfortably it fits the situation.",work:'Work',writing:'Writing',about:'About',sound:'Modular Smart Speaker',note:'Writing',soundCopy:'A design project about sound and space.',lumenCopy:'A light-alarm sleep mask.',whereCopy:'A design concept about memory.',noteCopy:'To be updated.',aboutCopy:'Design and life.',dark:'Dark',light:'Light',settings:'Display settings',sections:'Sections',home:'Back to home',themeDark:'Switch to dark mode',themeLight:'Switch to light mode',description:'Work and writing by Young.'}
 };
 let language='en',activeSection=null;
 try{if(localStorage.getItem('zyan-language-v2')==='zh')language='zh'}catch(_){}
 function remember(key,value){try{localStorage.setItem(key,value)}catch(_){}}
-function updateTitle(){document.title=activeSection&&activeSection.id!=='home'?strings[language][activeSection.id]+' — ZYAN':'ZYAN'}
+function updateTitle(){document.title=activeSection&&activeSection.id!=='home'?strings[language][activeSection.id]+' — Young':'Young'}
 function updateThemeButton(){
 const dark=root.dataset.theme==='dark';
 themeButton.textContent=strings[language][dark?'light':'dark'];
@@ -121,7 +121,7 @@ languageButton.setAttribute('aria-label',language==='zh'?'Switch to English':'�
 settings.setAttribute('aria-label',strings[language].settings);
 document.querySelector('.contacts').setAttribute('aria-label',strings[language].contacts);
 document.querySelector('.sections').setAttribute('aria-label',strings[language].sections);
-document.querySelector('.brand').setAttribute('aria-label','ZYAN — '+strings[language].home);
+document.querySelector('.brand').setAttribute('aria-label','Young — '+strings[language].home);
 document.querySelector('meta[name="description"]').content=strings[language].description;
 editions.forEach(edition=>{edition.setAttribute('aria-label',strings[language][edition.id==='home'?'homepage':edition.id])});
 updateThemeButton();updateTitle();
