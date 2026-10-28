@@ -1,0 +1,6 @@
+ZYAN Han Serif Light is a web subset of Source Han Serif CN Light by Adobe,
+from https://github.com/adobe-fonts/source-han-serif (release branch).
+The outlines and Light weight are unchanged. This subset contains the Chinese
+characters and punctuation used by this site. Its internal family name was
+changed to ZYAN Han Serif Light. The font is distributed under the SIL Open
+Font License, Version 1.1; see OFL.txt for copyright and license terms.
