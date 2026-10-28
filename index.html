@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Zyan 的作品与文字。">
+<meta name="description" content="ZYAN 的作品与文字。">
 <meta name="color-scheme" content="light dark">
-<title>Zyan</title>
+<title>ZYAN</title>
 <script>try{if(localStorage.getItem('zyan-theme')==='dark')document.documentElement.dataset.theme='dark'}catch(_){}</script>
 <style>
 :root{color-scheme:light;--paper:#e9e9eb;--ink:#171717}
 :root[data-theme="dark"]{color-scheme:dark;--paper:#171717;--ink:#e9e9eb}
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.3 Arial,"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:.1px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.5 "Courier New","Liberation Mono","Songti SC","Noto Serif CJK SC",SimSun,monospace;letter-spacing:0}
 .page{max-width:480px;min-height:100svh;margin:0 auto;padding:40px 40px 110px}
 a,button,summary{color:inherit;-webkit-tap-highlight-color:transparent}
 a{text-decoration:none}
 button{font:inherit;letter-spacing:inherit;border:0;border-radius:0;padding:0;background:none;cursor:pointer}
 .masthead{display:flex;align-items:baseline;flex-wrap:wrap;column-gap:20px;row-gap:12px;margin-bottom:14px}
-.date{white-space:nowrap;font-variant-numeric:tabular-nums}
+.brand{white-space:nowrap;font-size:18px;font-weight:700;letter-spacing:-.04em}
 .sections{display:flex;flex-wrap:wrap;gap:12px}
 .masthead a{position:relative;display:inline-block}
 .masthead a::after{position:absolute;content:"";inset:-10px -3px}
@@ -40,14 +40,14 @@ summary::marker{content:""}
 <body>
 <div class="page">
 <header class="masthead">
-<a class="date" href="#home" aria-label="返回首页"><time datetime="2026-10-28">10 28 26</time></a>
+<a class="brand" href="#home" lang="en" aria-label="ZYAN — 返回首页">ZYAN</a>
 <nav class="sections" aria-label="栏目">
 <a href="#work" data-section="work" data-i18n="work">作品</a>
 <a href="#writing" data-section="writing" data-i18n="writing">文字</a>
 <a href="#about" data-section="about" data-i18n="about">关于</a>
 </nav>
 </header>
-<main aria-label="Zyan">
+<main aria-label="ZYAN">
 <section class="edition" id="work" aria-label="作品" hidden>
 <details id="sound"><summary data-i18n="sound">模块化智能音响</summary><div class="body"><p data-i18n="soundCopy">一个关于声音与空间的设计项目。</p></div></details>
 <details id="lumen"><summary>LUMEN</summary><div class="body"><p data-i18n="lumenCopy">光闹钟眼罩。</p></div></details>
@@ -74,8 +74,8 @@ const themeButton=document.getElementById('theme');
 const editions=[...document.querySelectorAll('.edition')];
 const sectionLinks=[...document.querySelectorAll('[data-section]')];
 const strings={
-zh:{work:'作品',writing:'文字',about:'关于',sound:'模块化智能音响',note:'一些文字',soundCopy:'一个关于声音与空间的设计项目。',lumenCopy:'光闹钟眼罩。',whereCopy:'一个关于记忆的设计概念。',noteCopy:'待更新。',aboutCopy:'设计与生活。',expand:'展开',collapse:'收起',expandAll:'展开全部',collapseAll:'收起全部',dark:'深色',light:'浅色',settings:'显示设置',sections:'栏目',home:'返回首页',themeDark:'切换到深色模式',themeLight:'切换到浅色模式',description:'Zyan 的作品与文字。'},
-en:{work:'Work',writing:'Writing',about:'About',sound:'Modular Smart Speaker',note:'Writing',soundCopy:'A design project about sound and space.',lumenCopy:'A light-alarm sleep mask.',whereCopy:'A design concept about memory.',noteCopy:'To be updated.',aboutCopy:'Design and life.',expand:'Expand',collapse:'Collapse',expandAll:'Expand all',collapseAll:'Collapse all',dark:'Dark',light:'Light',settings:'Display settings',sections:'Sections',home:'Back to home',themeDark:'Switch to dark mode',themeLight:'Switch to light mode',description:'Work and writing by Zyan.'}
+zh:{work:'作品',writing:'文字',about:'关于',sound:'模块化智能音响',note:'一些文字',soundCopy:'一个关于声音与空间的设计项目。',lumenCopy:'光闹钟眼罩。',whereCopy:'一个关于记忆的设计概念。',noteCopy:'待更新。',aboutCopy:'设计与生活。',expand:'展开',collapse:'收起',expandAll:'展开全部',collapseAll:'收起全部',dark:'深色',light:'浅色',settings:'显示设置',sections:'栏目',home:'返回首页',themeDark:'切换到深色模式',themeLight:'切换到浅色模式',description:'ZYAN 的作品与文字。'},
+en:{work:'Work',writing:'Writing',about:'About',sound:'Modular Smart Speaker',note:'Writing',soundCopy:'A design project about sound and space.',lumenCopy:'A light-alarm sleep mask.',whereCopy:'A design concept about memory.',noteCopy:'To be updated.',aboutCopy:'Design and life.',expand:'Expand',collapse:'Collapse',expandAll:'Expand all',collapseAll:'Collapse all',dark:'Dark',light:'Light',settings:'Display settings',sections:'Sections',home:'Back to home',themeDark:'Switch to dark mode',themeLight:'Switch to light mode',description:'Work and writing by ZYAN.'}
 };
 let language='zh',activeSection=null;
 try{if(localStorage.getItem('zyan-language')==='en')language='en'}catch(_){}
@@ -87,7 +87,7 @@ button.textContent=strings[language][allOpen?'collapse':'expand'];
 button.setAttribute('aria-label',strings[language][allOpen?'collapseAll':'expandAll']);
 button.setAttribute('aria-expanded',String(allOpen));
 }
-function updateTitle(){document.title=activeSection?strings[language][activeSection.id]+' — Zyan':'Zyan'}
+function updateTitle(){document.title=activeSection?strings[language][activeSection.id]+' — ZYAN':'ZYAN'}
 function updateThemeButton(){
 const dark=root.dataset.theme==='dark';
 themeButton.textContent=strings[language][dark?'light':'dark'];
@@ -101,7 +101,7 @@ languageButton.lang=language==='zh'?'en':'zh-CN';
 languageButton.setAttribute('aria-label',language==='zh'?'Switch to English':'切换到中文');
 settings.setAttribute('aria-label',strings[language].settings);
 document.querySelector('.sections').setAttribute('aria-label',strings[language].sections);
-document.querySelector('.date').setAttribute('aria-label',strings[language].home);
+document.querySelector('.brand').setAttribute('aria-label','ZYAN — '+strings[language].home);
 document.querySelector('meta[name="description"]').content=strings[language].description;
 editions.forEach(edition=>{edition.setAttribute('aria-label',strings[language][edition.id]);updateExpand(edition)});
 updateThemeButton();updateTitle();
@@ -118,7 +118,7 @@ if(active)link.setAttribute('aria-current','page');else link.removeAttribute('ar
 if(target&&target.matches('details'))target.open=true;
 updateTitle();
 if(focus){
-const destination=target&&target.matches('details')?target.querySelector('summary'):activeSection?sectionLinks.find(link=>link.dataset.section===activeSection.id):document.querySelector('.date');
+const destination=target&&target.matches('details')?target.querySelector('summary'):activeSection?sectionLinks.find(link=>link.dataset.section===activeSection.id):document.querySelector('.brand');
 destination.focus({preventScroll:true});window.scrollTo(0,0);
 }
 }
