@@ -6,10 +6,10 @@ from fontTools import subset
 from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'assets/fonts/ming-light-v4.woff2'
+OUTPUT = ROOT / 'assets/fonts/ming-light-v5.woff2'
 SOURCE_URL = ('https://raw.githubusercontent.com/adobe-fonts/source-han-serif/'
               '7889f11bf31170b5d092a083b357c8c8130f89e0/'
-              'OTF/TraditionalChinese/SourceHanSerifTC-ExtraLight.otf')
+              'OTF/SimplifiedChinese/SourceHanSerifSC-ExtraLight.otf')
 
 def cjk(code):
     return any(a <= code <= b for a, b in (

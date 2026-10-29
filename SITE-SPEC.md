@@ -12,8 +12,8 @@
 
 ## 字体
 
-- 中文统一使用网站自托管的 `ZYAN Ming Light` 字体族。实际字形为 Adobe 思源宋体繁体版 ExtraLight，沿用现有细明体风格。
-- 当前文件：`assets/fonts/ming-light-v4.woff2`。不能把本机 MingLiU、PMingLiU 等放在网页字体之前，否则不同设备会显示不同字形。
+- 中文统一使用网站自托管的 `ZYAN Ming Light` 字体族。实际字形为 Adobe 思源宋体简体版 ExtraLight，沿用现有细明体风格。
+- 当前文件：`assets/fonts/ming-light-v5.woff2`。不能把本机 MingLiU、PMingLiU 等放在网页字体之前，否则不同设备会显示不同字形。
 - 拉丁字符沿用 Courier New，后备为 Liberation Mono。中文字体的 `unicode-range` 限定 CJK 范围，不覆盖拉丁字符。
 - 中文标题、正文、资料行、按钮、导航和无障碍文案必须全部在同一字体文件的覆盖范围内。资料行继承字体；不可单独指定另一套字体。
 - 字重由现有样式控制，不为新增条目加粗；禁止浏览器合成字重或斜体（`font-synthesis: none`）。
@@ -23,7 +23,7 @@
 
 ## 语言
 
-- 保持英文与繁体中文切换；中文界面不混用简体中文。
+- 保持英文与简体中文切换；中文界面不混用繁体中文，语言标记使用 `zh-Hans`。
 - 人名保留可核实的原名，品牌保留官方拼写，不强行音译。
 - 所有新增标题和资料行都需要对应的 `data-i18n` 键与两种语言的文案。
 - 专辑原名和产品名保留原文。没有官方英文名的作品，保留原题，不编造英文书名。
@@ -45,9 +45,9 @@
 | Objects | 品牌或设计者 · 年份 · 产品类别 | 使用简短产品名词，如无线耳机 / Earbuds |
 | Websites | 创作者或机构 · 创立年份 · 类别 | 如新闻 / News |
 
-表内中文为规范说明；页面统一使用对应的繁体中文。
+表内中文为规范说明；页面统一使用简体中文。
 
-工具用途：编辑器 / Editor、截图工具 / Screenshots、远端控制 / Remote desktop、设计工具 / Design、AI 助手 / AI assistant、串流音乐 / Music streaming、云端同步 / Cloud sync、音乐播放 / Music player、笔记工具 / Notes、足迹记录 / Travel tracking、程式码托管 / Code hosting、输入法 / Input method、素材管理 / Asset management。
+工具用途：编辑器 / Editor、截图工具 / Screenshots、远程控制 / Remote desktop、设计工具 / Design、AI 助手 / AI assistant、流媒体音乐 / Music streaming、云同步 / Cloud sync、音乐播放 / Music player、笔记工具 / Notes、足迹记录 / Travel tracking、代码托管 / Code hosting、输入法 / Input method、素材管理 / Asset management。
 
 - 每项只标一个类型或用途；同类条目复用同一用语。
 - 不加入赛博朋克、黑暗奇幻、心理惊悚、讽刺等题材或风格标签。
@@ -68,11 +68,11 @@
 
 构建依赖见 `scripts/requirements-font.txt`。字体原文件从 Adobe 官方仓库的固定版本获取：
 
-`https://raw.githubusercontent.com/adobe-fonts/source-han-serif/7889f11bf31170b5d092a083b357c8c8130f89e0/OTF/TraditionalChinese/SourceHanSerifTC-ExtraLight.otf`
+`https://raw.githubusercontent.com/adobe-fonts/source-han-serif/7889f11bf31170b5d092a083b357c8c8130f89e0/OTF/SimplifiedChinese/SourceHanSerifSC-ExtraLight.otf`
 
 ```sh
 python3 -m pip install -r scripts/requirements-font.txt
-python3 scripts/build-font.py --source /path/to/SourceHanSerifTC-ExtraLight.otf
+python3 scripts/build-font.py --source /path/to/SourceHanSerifSC-ExtraLight.otf
 python3 scripts/build-font.py --check
 ```
 
