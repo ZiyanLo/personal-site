@@ -6,7 +6,7 @@ from fontTools import subset
 from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'assets/fonts/ming-light-v6.woff2'
+OUTPUT = ROOT / 'assets/fonts/ming-light-v7.woff2'
 SOURCE_URL = ('https://raw.githubusercontent.com/adobe-fonts/source-han-serif/'
               '7889f11bf31170b5d092a083b357c8c8130f89e0/'
               'OTF/SimplifiedChinese/SourceHanSerifSC-ExtraLight.otf')
