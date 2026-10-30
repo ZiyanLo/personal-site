@@ -54,9 +54,9 @@
 | 类别 | 资料格式 |
 | --- | --- |
 | Books | 作者 · 首版年份 |
-| Films & Series | 导演 · 年份或年份范围 |
+| Films | 导演 · 年份或年份范围 |
 | Albums | 艺术家 · 首发年份 |
-| Tools & Apps | 开发者或机构 |
+| Tools | 开发者或机构 |
 | Objects | 品牌或设计者 |
 | Websites | 创作者或机构 |
 
