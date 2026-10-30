@@ -13,7 +13,7 @@
 ## 字体
 
 - 中文统一使用网站自托管的 `ZYAN Ming Light` 字体族。实际字形为 Adobe 思源宋体简体版 ExtraLight，沿用现有细明体风格。
-- 当前文件：`assets/fonts/ming-light-v7.woff2`。不能把本机 MingLiU、PMingLiU 等放在网页字体之前，否则不同设备会显示不同字形。
+- 当前文件：`assets/fonts/ming-light-v8.woff2`。不能把本机 MingLiU、PMingLiU 等放在网页字体之前，否则不同设备会显示不同字形。
 - 拉丁字符沿用 Courier New，后备为 Liberation Mono。中文字体的 `unicode-range` 限定 CJK 范围，不覆盖拉丁字符。
 - 中文标题、正文、资料行、按钮、导航和无障碍文案必须全部在同一字体文件的覆盖范围内。资料行继承字体；不可单独指定另一套字体。
 - 字重由现有样式控制，不为新增条目加粗；禁止浏览器合成字重或斜体（`font-synthesis: none`）。
