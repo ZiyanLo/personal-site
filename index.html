@@ -54,12 +54,12 @@ summary::marker{content:""}
 .contacts{list-style:none;margin:36px 0 0;padding:0}
 .contacts li{margin:0 0 12px}
 .contacts a,.contacts .wechat-trigger{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-.wechat-dialog{width:min(350px,calc(100vw - 40px));max-width:none;max-height:calc(100dvh - 40px);padding:32px 28px 24px;border:1px solid var(--ink);border-radius:0;background:var(--paper);color:var(--ink);text-align:center;box-shadow:none}
-.wechat-dialog::backdrop{background:rgba(0,0,0,.58)}
-.wechat-close{position:absolute;right:15px;top:9px;font-size:24px;line-height:1;padding:5px}
-.wechat-qr{display:block;width:100%;max-width:280px;height:auto;margin:6px auto 16px;background:#fff;image-rendering:pixelated}
-.wechat-name{margin:0 0 6px;font-size:15px}
-.wechat-hint{margin:0;font-size:12px;opacity:.65}
+.wechat-dialog{position:relative;width:min(302px,calc(100vw - 48px));max-width:none;max-height:calc(100dvh - 48px);padding:30px;border:0;border-radius:0;background:#fff;color:#171717;box-shadow:none;overflow:visible}
+.wechat-dialog::backdrop{background:rgba(0,0,0,.38)}
+.wechat-close{position:absolute;right:8px;top:5px;width:26px;height:26px;display:grid;place-items:center;font:400 20px/1 Arial,sans-serif;color:#171717;opacity:.55}
+.wechat-close:hover,.wechat-close:focus-visible{opacity:1}
+.wechat-qr{display:block;width:100%;height:auto;margin:0;background:#fff;image-rendering:pixelated}
+
 .preferences{position:relative;z-index:2;width:min(100%,480px);margin:0 auto;padding:12px 40px 0;flex:none;display:flex;gap:20px;align-items:center;font-size:12px;background:var(--paper)}
 .preferences button{min-height:44px}
 :is(a,button,summary):focus-visible{outline:1px solid currentColor;outline-offset:4px}
@@ -84,10 +84,10 @@ summary::marker{content:""}
 <div class="about-copy" id="profile">
 <p data-i18n="bio1">Hi, I'm YOUNG.</p>
 <ul class="contacts" aria-label="Contact and links">
-<li><a href="mailto:zyanlo903@gmail.com">zyanlo903@gmail.com</a></li>
+<li><a href="mailto:zyanlo903@gmail.com">zyanlo903@gmail.com <span aria-hidden="true">→&#xfe0e;</span></a></li>
 <li><a href="https://github.com/ZiyanLo" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">→&#xfe0e;</span></a></li>
 <li><a href="https://x.com/zyanlo218058" target="_blank" rel="noopener noreferrer">X <span aria-hidden="true">→&#xfe0e;</span></a></li>
-<li><button class="wechat-trigger" id="wechat-open" type="button" aria-haspopup="dialog" aria-controls="wechat-dialog">YUNGTHEDREAMER <span aria-hidden="true">↗&#xfe0e;</span></button></li>
+<li><button class="wechat-trigger" id="wechat-open" type="button" aria-haspopup="dialog" aria-controls="wechat-dialog">WeChat <span aria-hidden="true">→&#xfe0e;</span></button></li>
 </ul>
 </div>
 </section>
@@ -118,11 +118,9 @@ summary::marker{content:""}
 <details name="entry" id="pick-websites"><summary data-i18n="websites">Websites</summary><div class="body"><ul class="pick-list"><li><a href="https://yews.news/" target="_blank" rel="noopener noreferrer"><span data-i18n="pick-yews-title">yews.news</span> <span aria-hidden="true">→&#xfe0e;</span></a><p class="pick-meta" data-i18n="pick-yews-meta">Ye &amp; Yeezy</p></li></ul></div></details>
 </section>
 </main>
-<dialog class="wechat-dialog" id="wechat-dialog" aria-labelledby="wechat-name" aria-describedby="wechat-hint">
+<dialog class="wechat-dialog" id="wechat-dialog" aria-label="WeChat QR code">
 <button class="wechat-close" id="wechat-close" type="button" aria-label="Close">×</button>
-<canvas class="wechat-qr" id="wechat-qr" width="490" height="490" role="img" aria-label="WeChat QR code for YUNGTHEDREAMER"></canvas>
-<p class="wechat-name" id="wechat-name">YUNGTHEDREAMER</p>
-<p class="wechat-hint" id="wechat-hint">Scan with WeChat / 微信扫码关注</p>
+<canvas class="wechat-qr" id="wechat-qr" width="490" height="490" role="img" aria-label="Scan to follow on WeChat"></canvas>
 </dialog>
 <nav class="preferences" aria-label="Display settings" hidden><button id="language" type="button" lang="zh-Hans">中文</button><button id="theme" type="button">Dark</button></nav>
 </div>
