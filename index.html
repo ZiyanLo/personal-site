@@ -53,7 +53,13 @@ summary::marker{content:""}
 .about-copy p{margin:0 0 24px}
 .contacts{list-style:none;margin:36px 0 0;padding:0}
 .contacts li{margin:0 0 12px}
-.contacts a{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.contacts a,.contacts .wechat-trigger{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.wechat-dialog{width:min(350px,calc(100vw - 40px));max-width:none;max-height:calc(100dvh - 40px);padding:32px 28px 24px;border:1px solid var(--ink);border-radius:0;background:var(--paper);color:var(--ink);text-align:center;box-shadow:none}
+.wechat-dialog::backdrop{background:rgba(0,0,0,.58)}
+.wechat-close{position:absolute;right:15px;top:9px;font-size:24px;line-height:1;padding:5px}
+.wechat-qr{display:block;width:100%;max-width:280px;height:auto;margin:6px auto 16px;background:#fff;image-rendering:pixelated}
+.wechat-name{margin:0 0 6px;font-size:15px}
+.wechat-hint{margin:0;font-size:12px;opacity:.65}
 .preferences{position:relative;z-index:2;width:min(100%,480px);margin:0 auto;padding:12px 40px 0;flex:none;display:flex;gap:20px;align-items:center;font-size:12px;background:var(--paper)}
 .preferences button{min-height:44px}
 :is(a,button,summary):focus-visible{outline:1px solid currentColor;outline-offset:4px}
@@ -81,7 +87,7 @@ summary::marker{content:""}
 <li><a href="mailto:zyanlo903@gmail.com">zyanlo903@gmail.com</a></li>
 <li><a href="https://github.com/ZiyanLo" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">→&#xfe0e;</span></a></li>
 <li><a href="https://x.com/zyanlo218058" target="_blank" rel="noopener noreferrer">X <span aria-hidden="true">→&#xfe0e;</span></a></li>
-<li><a href="https://mp.weixin.qq.com/s/RuGjIA1MNfkiNbu1nSrJQg" target="_blank" rel="noopener noreferrer" aria-label="YUNGTHEDREAMER on WeChat">YUNGTHEDREAMER <span aria-hidden="true">→&#xfe0e;</span></a></li>
+<li><button class="wechat-trigger" id="wechat-open" type="button" aria-haspopup="dialog" aria-controls="wechat-dialog">YUNGTHEDREAMER <span aria-hidden="true">↗&#xfe0e;</span></button></li>
 </ul>
 </div>
 </section>
@@ -112,6 +118,12 @@ summary::marker{content:""}
 <details name="entry" id="pick-websites"><summary data-i18n="websites">Websites</summary><div class="body"><ul class="pick-list"><li><a href="https://yews.news/" target="_blank" rel="noopener noreferrer"><span data-i18n="pick-yews-title">yews.news</span> <span aria-hidden="true">→&#xfe0e;</span></a><p class="pick-meta" data-i18n="pick-yews-meta">Ye &amp; Yeezy</p></li></ul></div></details>
 </section>
 </main>
+<dialog class="wechat-dialog" id="wechat-dialog" aria-labelledby="wechat-name" aria-describedby="wechat-hint">
+<button class="wechat-close" id="wechat-close" type="button" aria-label="Close">×</button>
+<canvas class="wechat-qr" id="wechat-qr" width="490" height="490" role="img" aria-label="WeChat QR code for YUNGTHEDREAMER"></canvas>
+<p class="wechat-name" id="wechat-name">YUNGTHEDREAMER</p>
+<p class="wechat-hint" id="wechat-hint">Scan with WeChat / 微信扫码关注</p>
+</dialog>
 <nav class="preferences" aria-label="Display settings" hidden><button id="language" type="button" lang="zh-Hans">中文</button><button id="theme" type="button">Dark</button></nav>
 </div>
 <script type="module">
@@ -167,6 +179,18 @@ languageButton.addEventListener('click',()=>{language=language==='zh'?'en':'zh';
 themeButton.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';remember('zyan-theme',root.dataset.theme);updateThemeButton()});
 window.addEventListener('hashchange',()=>route(true));
 route();translate();settings.hidden=false;
+
+
+const wechatDialog=document.getElementById('wechat-dialog');
+const qrCanvas=document.getElementById('wechat-qr');
+const qrContext=qrCanvas.getContext('2d');
+const qrRows=["0000000000000","0000000000000","0000000000000","0000000000000","01fd6e8b3a7f0","0104a08cb7410","01749bde1e5d0","01753b168e5d0","017429d9865d0","0104ab542f410","01fd5555557f0","0000cd55cd000","005d273edb890","017908b5018d0","01af825d90b50","01e97b1e5dc00","01ae12bbb8890","0051269f3e8b0","010ddf21fc2f0","018ba7785ad80","0064fe39e8600","0041261fc9e90","00061d5d159f0","01638f230c200","004cddb567790","016006ac74eb0","016d501a55fb0","01c21c13ecab0","000dc44dd8560","00b384be1d430","0115b53b04770","000bf16ba9120","00a63f402f490","00e950592b050","013c761243a30","00f961e8a9630","012c7b025bf20","0001857237190","01fc13ec89570","0105322cc11b0","0175be9781f20","0174499c52970","017588f944310","0104299459660","01fc479a7bb70","0000000000000","0000000000000","0000000000000","0000000000000"];
+qrContext.fillStyle='#fff';qrContext.fillRect(0,0,490,490);
+qrContext.fillStyle='#000';
+qrRows.forEach((hex,y)=>{const bits=BigInt('0x'+hex);for(let x=0;x<49;x++){if((bits>>BigInt(48-x))&1n)qrContext.fillRect(x*10,y*10,10,10)}});
+document.getElementById('wechat-open').addEventListener('click',()=>wechatDialog.showModal());
+document.getElementById('wechat-close').addEventListener('click',()=>wechatDialog.close());
+wechatDialog.addEventListener('click',event=>{if(event.target===wechatDialog)wechatDialog.close()});
 
 installSwipeNavigation({surface:document,getCurrentPage:()=>activeSection.id,navigate:page=>{location.hash=page;},getSelection:()=>window.getSelection()?.toString()||"",getViewportWidth:()=>window.innerWidth});
 })();
