@@ -54,10 +54,8 @@ summary::marker{content:""}
 .contacts{list-style:none;margin:36px 0 0;padding:0}
 .contacts li{margin:0 0 12px}
 .contacts a,.contacts .wechat-trigger{text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-.wechat-dialog{position:relative;width:min(302px,calc(100vw - 48px));max-width:none;max-height:calc(100dvh - 48px);padding:30px;border:0;border-radius:0;background:#fff;color:#171717;box-shadow:none;overflow:visible}
+.wechat-dialog{width:min(280px,calc(100vw - 48px));max-width:none;max-height:calc(100dvh - 48px);padding:0;border:0;border-radius:0;background:#fff;box-shadow:none;overflow:hidden}
 .wechat-dialog::backdrop{background:rgba(0,0,0,.38)}
-.wechat-close{position:absolute;right:8px;top:5px;width:26px;height:26px;display:grid;place-items:center;font:400 20px/1 Arial,sans-serif;color:#171717;opacity:.55}
-.wechat-close:hover,.wechat-close:focus-visible{opacity:1}
 .wechat-qr{display:block;width:100%;height:auto;margin:0;background:#fff;image-rendering:pixelated}
 
 .preferences{position:relative;z-index:2;width:min(100%,480px);margin:0 auto;padding:12px 40px 0;flex:none;display:flex;gap:20px;align-items:center;font-size:12px;background:var(--paper)}
@@ -119,7 +117,6 @@ summary::marker{content:""}
 </section>
 </main>
 <dialog class="wechat-dialog" id="wechat-dialog" aria-label="WeChat QR code">
-<button class="wechat-close" id="wechat-close" type="button" aria-label="Close">×</button>
 <canvas class="wechat-qr" id="wechat-qr" width="490" height="490" role="img" aria-label="Scan to follow on WeChat"></canvas>
 </dialog>
 <nav class="preferences" aria-label="Display settings" hidden><button id="language" type="button" lang="zh-Hans">中文</button><button id="theme" type="button">Dark</button></nav>
@@ -187,7 +184,6 @@ qrContext.fillStyle='#fff';qrContext.fillRect(0,0,490,490);
 qrContext.fillStyle='#000';
 qrRows.forEach((hex,y)=>{const bits=BigInt('0x'+hex);for(let x=0;x<49;x++){if((bits>>BigInt(48-x))&1n)qrContext.fillRect(x*10,y*10,10,10)}});
 document.getElementById('wechat-open').addEventListener('click',()=>wechatDialog.showModal());
-document.getElementById('wechat-close').addEventListener('click',()=>wechatDialog.close());
 wechatDialog.addEventListener('click',event=>{if(event.target===wechatDialog)wechatDialog.close()});
 
 installSwipeNavigation({surface:document,getCurrentPage:()=>activeSection.id,navigate:page=>{location.hash=page;},getSelection:()=>window.getSelection()?.toString()||"",getViewportWidth:()=>window.innerWidth});
